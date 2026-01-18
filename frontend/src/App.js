@@ -1,51 +1,116 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect, useRef } from 'react';
+import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import HeroSection from './components/HeroSection';
+import SyllabusOverview from './components/SyllabusOverview';
+import UnitContent from './components/UnitContent';
+import InteractiveLab from './components/InteractiveLab';
+import Footer from './components/Footer';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+function App() {
+  const [activeSection, setActiveSection] = useState('home');
+  const [selectedUnit, setSelectedUnit] = useState(null);
+  
+  const syllabusRef = useRef(null);
+  const unitsRef = useRef(null);
+  const interactiveRef = useRef(null);
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
+  const handleNavigate = (section) => {
+    setActiveSection(section);
+    
+    if (section === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setSelectedUnit(null);
+    } else if (section === 'syllabus') {
+      setSelectedUnit(null);
+      syllabusRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (section === 'units') {
+      unitsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (section === 'interactive') {
+      setSelectedUnit(null);
+      interactiveRef.current?.scrollIntoView({ behavior: 'smooth' });
+    } else if (section.startsWith('unit-')) {
+      const unitId = parseInt(section.split('-')[1]);
+      setSelectedUnit(unitId);
+      unitsRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
+  const handleSelectUnit = (unitId) => {
+    setSelectedUnit(unitId);
+    setActiveSection('units');
+    setTimeout(() => {
+      unitsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  const handleBackFromUnit = () => {
+    setSelectedUnit(null);
+    setActiveSection('syllabus');
+    syllabusRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Intersection Observer for active section
   useEffect(() => {
-    helloWorldApi();
-  }, []);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            if (id && !selectedUnit) {
+              setActiveSection(id);
+            }
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, [selectedUnit]);
 
   return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
-
-function App() {
-  return (
-    <div className="App">
+    <div className="App bg-slate-950 min-h-screen">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
+        <Header activeSection={activeSection} onNavigate={handleNavigate} />
+        
+        <main>
+          <section id="home">
+            <HeroSection onNavigate={handleNavigate} />
+          </section>
+          
+          <div ref={syllabusRef}>
+            <SyllabusOverview onNavigate={handleNavigate} onSelectUnit={handleSelectUnit} />
+          </div>
+          
+          <div ref={unitsRef}>
+            {selectedUnit ? (
+              <UnitContent selectedUnit={selectedUnit} onBack={handleBackFromUnit} />
+            ) : (
+              <section className="py-24 bg-slate-950" id="units">
+                <div className="max-w-4xl mx-auto px-4 text-center">
+                  <div className="bg-slate-900/50 rounded-2xl border border-slate-800 p-12">
+                    <h3 className="text-2xl font-bold text-white mb-4">Select a Unit to Begin</h3>
+                    <p className="text-slate-400">
+                      Choose any unit from the syllabus above to start learning. Each unit contains
+                      comprehensive theory, examples, and interactive content.
+                    </p>
+                  </div>
+                </div>
+              </section>
+            )}
+          </div>
+          
+          <div ref={interactiveRef}>
+            <InteractiveLab />
+          </div>
+        </main>
+        
+        <Footer onNavigate={handleNavigate} />
       </BrowserRouter>
     </div>
   );
