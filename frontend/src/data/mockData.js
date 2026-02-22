@@ -1,3 +1,9 @@
+export const courseInfo = {
+  title: "Computer Organization & Architecture",
+  code: "BCA-52T-115",
+  description: "Interactive smart learning platform for COA",
+};
+
 
 export const coaUnits = [
 {
