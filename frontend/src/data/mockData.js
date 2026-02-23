@@ -14,7 +14,7 @@ export const units = [
     title: "Boolean Algebra & Combinational Logic",
     subtitle: "Logic Gates, Boolean Laws, Multiplexers, Decoders, Adders",
     icon: "Gate",
-    color: "from-cyan-500 to-blue-500",
+    color: "from-violet-500 to-indigo-500",
     topics: [
       {
         id: "1.1",
@@ -940,7 +940,7 @@ Example: MAR_in = T0 (active during T0 for ALL instructions)
     title: "I/O & Memory Organization",
     subtitle: "I/O Interfaces, DMA, Interrupts, Memory Hierarchy, Cache, Virtual Memory",
     icon: "Memory",
-    color: "from-green-500 to-teal-500",
+    color: "from-cyan-500 to-emerald-500",
     topics: [
       {
         id: "4.1",

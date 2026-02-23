@@ -17,8 +17,8 @@ const DiagramCard = ({ diagram }) => {
   return (
     <div className="bg-slate-800/60 border border-slate-700 rounded-xl overflow-hidden">
       <div className="flex items-center gap-2 px-4 py-2 border-b border-slate-700 bg-slate-900/40">
-        <ImageIcon className="w-4 h-4 text-cyan-400" />
-        <span className="text-xs font-medium text-cyan-400 uppercase tracking-wider">{diagram.caption}</span>
+        <ImageIcon className="w-4 h-4 text-violet-400" />
+        <span className="text-xs font-medium text-violet-400 uppercase tracking-wider">{diagram.caption}</span>
       </div>
       <div className="p-4 flex justify-center bg-white/5 min-h-[180px] items-center">
         {error ? (
@@ -60,14 +60,14 @@ const TheoryBlock = ({ topic }) => (
 
     {/* Key Points box */}
     {topic.keyPoints && (
-      <div className="bg-cyan-500/5 border border-cyan-500/25 rounded-xl p-5">
-        <h4 className="text-sm font-semibold text-cyan-400 uppercase tracking-wider mb-3 flex items-center gap-2">
+      <div className="bg-violet-500/5 border border-violet-500/25 rounded-xl p-5">
+        <h4 className="text-sm font-semibold text-violet-400 uppercase tracking-wider mb-3 flex items-center gap-2">
           <Zap className="w-4 h-4" /> Key Points (University of Rajasthan)
         </h4>
         <ul className="space-y-2">
           {topic.keyPoints.map((pt, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-slate-300">
-              <span className="mt-1 w-4 h-4 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center flex-shrink-0 font-bold">{i + 1}</span>
+              <span className="mt-1 w-4 h-4 rounded-full bg-violet-500/20 text-violet-400 text-xs flex items-center justify-center flex-shrink-0 font-bold">{i + 1}</span>
               {pt}
             </li>
           ))}
@@ -99,9 +99,9 @@ const renderContent = (content) => {
             <h4 className="text-base font-semibold text-white">Types of Logic Gates</h4>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {item.items.map((gate, idx) => (
-                <Card key={idx} className="bg-slate-800/50 border-slate-700 hover:border-cyan-500/50 transition-colors">
+                <Card key={idx} className="bg-slate-800/50 border-slate-700 hover:border-violet-500/50 transition-colors">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base text-cyan-400">{gate.name}</CardTitle>
+                    <CardTitle className="text-base text-violet-400">{gate.name}</CardTitle>
                     <code className="text-xs bg-slate-900 px-2 py-0.5 rounded text-teal-400 w-fit">{gate.symbol}</code>
                   </CardHeader>
                   <CardContent>
@@ -110,7 +110,7 @@ const renderContent = (content) => {
                       <div className="bg-slate-900 rounded-lg p-2">
                         <table className="w-full text-xs">
                           <thead>
-                            <tr className="text-cyan-400">
+                            <tr className="text-violet-400">
                               {gate.truthTable[0].length === 3
                                 ? <><th className="p-1">A</th><th className="p-1">B</th><th className="p-1">Out</th></>
                                 : <><th className="p-1">In</th><th className="p-1">Out</th></>}
@@ -139,13 +139,13 @@ const renderContent = (content) => {
         return (
           <div key={index} className="space-y-2">
             {item.items.map((law, idx) => (
-              <div key={idx} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 hover:border-cyan-500/30 transition-colors">
+              <div key={idx} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700 hover:border-violet-500/30 transition-colors">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>
                     <h5 className="font-semibold text-white text-sm mb-0.5">{law.name}</h5>
                     <p className="text-xs text-slate-400">{law.explanation}</p>
                   </div>
-                  <code className="bg-slate-900 px-3 py-1 rounded text-cyan-400 text-sm whitespace-nowrap font-mono">{law.formula}</code>
+                  <code className="bg-slate-900 px-3 py-1 rounded text-violet-400 text-sm whitespace-nowrap font-mono">{law.formula}</code>
                 </div>
               </div>
             ))}
@@ -161,7 +161,7 @@ const renderContent = (content) => {
           <div key={index} className="space-y-3">
             {item.items && item.items.map((entry, idx) => (
               <div key={idx} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
-                <h5 className="font-semibold text-cyan-400 mb-1">{entry.name}</h5>
+                <h5 className="font-semibold text-violet-400 mb-1">{entry.name}</h5>
                 {entry.formula && <code className="block bg-slate-900 px-3 py-2 rounded text-teal-400 text-sm mb-2 font-mono">{entry.formula}</code>}
                 {entry.characteristic && <code className="block bg-slate-900 px-3 py-2 rounded text-teal-400 text-sm mb-2 font-mono">{entry.characteristic}</code>}
                 <p className="text-sm text-slate-400">{entry.description || entry.desc}</p>
@@ -176,7 +176,7 @@ const renderContent = (content) => {
             {item.items.map((reg, idx) => (
               <div key={idx} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="font-mono text-cyan-400 font-bold text-base">{reg.name}</span>
+                  <span className="font-mono text-violet-400 font-bold text-base">{reg.name}</span>
                   <Badge className="bg-slate-700 text-slate-300 text-xs">{reg.bits}-bit</Badge>
                 </div>
                 <p className="text-sm text-slate-400">{reg.purpose}</p>
@@ -195,7 +195,7 @@ const renderContent = (content) => {
             {item.items && item.items.map((entry, idx) => (
               <div key={idx} className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <span className="font-semibold text-cyan-400">{entry.name || entry.type}</span>
+                  <span className="font-semibold text-violet-400">{entry.name || entry.type}</span>
                   {entry.opcode && <Badge className="bg-slate-700 text-xs">{entry.opcode}</Badge>}
                 </div>
                 <p className="text-sm text-slate-400">{entry.desc || entry.description || entry.example}</p>
@@ -211,7 +211,7 @@ const renderContent = (content) => {
             <div className="space-y-3">
               {item.levels.map((level, idx) => (
                 <div key={idx} className="relative pl-14">
-                  <div className="absolute left-[18px] w-4 h-4 rounded-full bg-cyan-500 border-4 border-slate-900 top-3" />
+                  <div className="absolute left-[18px] w-4 h-4 rounded-full bg-violet-500 border-4 border-slate-900 top-3" />
                   <div className="bg-slate-800/50 rounded-xl p-4 border border-slate-700">
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="font-semibold text-white">{level.level}</span>
@@ -249,7 +249,7 @@ const UnitContent = ({ selectedUnit, onBack }) => {
   };
 
   return (
-    <section className="py-24 bg-slate-950 min-h-screen" id="units">
+    <section className="py-24 bg-[#050816] min-h-screen" id="units">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Back button */}
@@ -266,7 +266,7 @@ const UnitContent = ({ selectedUnit, onBack }) => {
               {getIcon(unit.icon)}
             </div>
             <div>
-              <Badge className="bg-cyan-500/10 text-cyan-400 border-cyan-500/30 mb-1">Unit {unit.id}</Badge>
+              <Badge className="bg-violet-500/10 text-violet-400 border-violet-500/30 mb-1">Unit {unit.id}</Badge>
               <h2 className="text-3xl font-bold text-white">{unit.title}</h2>
               <p className="text-slate-400 text-sm mt-0.5">{unit.subtitle}</p>
             </div>
@@ -287,7 +287,7 @@ const UnitContent = ({ selectedUnit, onBack }) => {
                       onClick={() => setCurrentTopicIndex(index)}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
                         currentTopicIndex === index
-                          ? 'bg-cyan-500/20 text-cyan-400 font-medium'
+                          ? 'bg-violet-500/20 text-violet-400 font-medium'
                           : 'text-slate-400 hover:bg-slate-800 hover:text-white'
                       }`}
                     >
@@ -328,13 +328,13 @@ const UnitContent = ({ selectedUnit, onBack }) => {
               <CardContent className="pt-6">
                 <Tabs defaultValue="theory" className="w-full">
                   <TabsList className="bg-slate-800 border border-slate-700 mb-6 flex-wrap h-auto gap-1">
-                    <TabsTrigger value="theory" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                    <TabsTrigger value="theory" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
                       <BookOpen className="w-4 h-4 mr-1" /> Theory
                     </TabsTrigger>
-                    <TabsTrigger value="content" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                    <TabsTrigger value="content" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
                       <Code className="w-4 h-4 mr-1" /> Detailed Content
                     </TabsTrigger>
-                    <TabsTrigger value="example" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+                    <TabsTrigger value="example" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
                       <Lightbulb className="w-4 h-4 mr-1" /> Example
                     </TabsTrigger>
                   </TabsList>

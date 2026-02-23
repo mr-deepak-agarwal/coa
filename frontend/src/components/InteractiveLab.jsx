@@ -77,10 +77,10 @@ const InteractiveLab = () => {
   };
 
   return (
-    <section className="py-24 bg-slate-950 relative" id="interactive">
+    <section className="py-24 bg-[#050816] relative" id="interactive">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
       </div>
 
@@ -100,13 +100,13 @@ const InteractiveLab = () => {
 
         <Tabs defaultValue="gates" className="w-full">
           <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3 bg-slate-900 border border-slate-800 mb-8">
-            <TabsTrigger value="gates" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+            <TabsTrigger value="gates" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
               Logic Gates
             </TabsTrigger>
-            <TabsTrigger value="flipflop" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+            <TabsTrigger value="flipflop" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
               Flip-Flops
             </TabsTrigger>
-            <TabsTrigger value="converter" className="data-[state=active]:bg-cyan-500/20 data-[state=active]:text-cyan-400">
+            <TabsTrigger value="converter" className="data-[state=active]:bg-violet-500/20 data-[state=active]:text-violet-400">
               Number Systems
             </TabsTrigger>
           </TabsList>
@@ -117,7 +117,7 @@ const InteractiveLab = () => {
               <Card className="bg-slate-900/50 border-slate-800">
                 <CardHeader>
                   <CardTitle className="text-white flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-cyan-400" />
+                    <Zap className="w-5 h-5 text-violet-400" />
                     Logic Gate Simulator
                   </CardTitle>
                 </CardHeader>
@@ -133,7 +133,7 @@ const InteractiveLab = () => {
                           size="sm"
                           onClick={() => setGateType(gate)}
                           className={gateType === gate 
-                            ? 'bg-cyan-500 text-slate-900 hover:bg-cyan-400' 
+                            ? 'bg-violet-500 text-slate-900 hover:bg-cyan-400' 
                             : 'border-slate-700 text-slate-300 hover:bg-slate-800'
                           }
                         >
@@ -148,13 +148,13 @@ const InteractiveLab = () => {
                     <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
                       <span className="text-slate-300">Input A</span>
                       <div className="flex items-center gap-3">
-                        <span className={`font-mono text-lg ${inputA ? 'text-cyan-400' : 'text-slate-500'}`}>
+                        <span className={`font-mono text-lg ${inputA ? 'text-violet-400' : 'text-slate-500'}`}>
                           {inputA ? '1' : '0'}
                         </span>
                         <Switch
                           checked={inputA}
                           onCheckedChange={setInputA}
-                          className="data-[state=checked]:bg-cyan-500"
+                          className="data-[state=checked]:bg-violet-500"
                         />
                       </div>
                     </div>
@@ -163,13 +163,13 @@ const InteractiveLab = () => {
                       <div className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg">
                         <span className="text-slate-300">Input B</span>
                         <div className="flex items-center gap-3">
-                          <span className={`font-mono text-lg ${inputB ? 'text-cyan-400' : 'text-slate-500'}`}>
+                          <span className={`font-mono text-lg ${inputB ? 'text-violet-400' : 'text-slate-500'}`}>
                             {inputB ? '1' : '0'}
                           </span>
                           <Switch
                             checked={inputB}
                             onCheckedChange={setInputB}
-                            className="data-[state=checked]:bg-cyan-500"
+                            className="data-[state=checked]:bg-violet-500"
                           />
                         </div>
                       </div>
@@ -181,7 +181,7 @@ const InteractiveLab = () => {
                     <div className="text-center">
                       <span className="text-sm text-slate-400 block mb-2">Output</span>
                       <span className={`text-6xl font-bold font-mono ${
-                        calculateGateOutput() ? 'text-cyan-400' : 'text-slate-600'
+                        calculateGateOutput() ? 'text-violet-400' : 'text-slate-600'
                       }`}>
                         {calculateGateOutput()}
                       </span>
@@ -203,8 +203,8 @@ const InteractiveLab = () => {
                     <table className="w-full">
                       <thead>
                         <tr className="border-b border-slate-700">
-                          <th className="px-4 py-3 text-cyan-400 font-semibold">A</th>
-                          {gateType !== 'NOT' && <th className="px-4 py-3 text-cyan-400 font-semibold">B</th>}
+                          <th className="px-4 py-3 text-violet-400 font-semibold">A</th>
+                          {gateType !== 'NOT' && <th className="px-4 py-3 text-violet-400 font-semibold">B</th>}
                           <th className="px-4 py-3 text-teal-400 font-semibold">Output</th>
                         </tr>
                       </thead>
@@ -251,7 +251,7 @@ const InteractiveLab = () => {
                   </div>
                   
                   <div className="mt-4 p-4 bg-slate-800/30 rounded-lg">
-                    <h4 className="text-cyan-400 font-semibold mb-2">Gate Expression</h4>
+                    <h4 className="text-violet-400 font-semibold mb-2">Gate Expression</h4>
                     <code className="text-slate-300">
                       {gateType === 'AND' && 'Y = A · B'}
                       {gateType === 'OR' && 'Y = A + B'}
@@ -358,7 +358,7 @@ const InteractiveLab = () => {
                     <div className="p-6 bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl border border-slate-700 text-center">
                       <span className="text-sm text-slate-400 block mb-2">Q' (Complement)</span>
                       <span className={`text-5xl font-bold font-mono ${
-                        !ffOutput ? 'text-cyan-400' : 'text-slate-600'
+                        !ffOutput ? 'text-violet-400' : 'text-slate-600'
                       }`}>
                         {ffOutput ? '0' : '1'}
                       </span>
@@ -435,7 +435,7 @@ const InteractiveLab = () => {
                       type="number"
                       value={decimalInput}
                       onChange={(e) => setDecimalInput(e.target.value)}
-                      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-2xl font-mono text-cyan-400 focus:outline-none focus:border-cyan-500 transition-colors"
+                      className="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-2xl font-mono text-violet-400 focus:outline-none focus:border-violet-500 transition-colors"
                       min="0"
                     />
                   </div>
@@ -444,7 +444,7 @@ const InteractiveLab = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-slate-800/50 rounded-xl p-6 text-center border border-slate-700">
                       <span className="text-sm text-slate-400 block mb-2">Binary (Base 2)</span>
-                      <span className="text-xl font-mono text-cyan-400 break-all">
+                      <span className="text-xl font-mono text-violet-400 break-all">
                         {decToBinary(decimalInput)}
                       </span>
                     </div>
@@ -469,7 +469,7 @@ const InteractiveLab = () => {
                       {decToBinary(decimalInput).split('').map((bit, idx) => (
                         <div key={idx} className="flex flex-col items-center">
                           <span className={`w-10 h-10 flex items-center justify-center rounded-lg font-mono text-xl font-bold ${
-                            bit === '1' ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50' : 'bg-slate-800 text-slate-600 border border-slate-700'
+                            bit === '1' ? 'bg-violet-500/20 text-violet-400 border border-violet-500/50' : 'bg-slate-800 text-slate-600 border border-slate-700'
                           }`}>
                             {bit}
                           </span>
