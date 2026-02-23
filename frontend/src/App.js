@@ -74,7 +74,7 @@ function App() {
   }, [selectedUnit]);
 
   return (
-    <div className="App bg-[#050816] min-h-screen">
+    <div className="App bg-white min-h-screen">
       <BrowserRouter>
         <Header activeSection={activeSection} onNavigate={handleNavigate} />
         
@@ -91,11 +91,11 @@ function App() {
             {selectedUnit ? (
               <UnitContent selectedUnit={selectedUnit} onBack={handleBackFromUnit} />
             ) : (
-              <section className="py-24 bg-[#050816]" id="units">
+              <section className="py-24 bg-gray-50" id="units">
                 <div className="max-w-4xl mx-auto px-4 text-center">
-                  <div className="bg-slate-900/50 rounded-2xl border border-slate-800 p-12">
-                    <h3 className="text-2xl font-bold text-white mb-4">Select a Unit to Begin</h3>
-                    <p className="text-slate-400">
+                  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-12">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">Select a Unit to Begin</h3>
+                    <p className="text-gray-500">
                       Choose any unit from the syllabus above to start learning. Each unit contains
                       comprehensive theory, examples, and interactive content.
                     </p>

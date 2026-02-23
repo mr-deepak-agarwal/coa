@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Cpu, BookOpen, GraduationCap } from 'lucide-react';
+import { Menu, X, Cpu, BookOpen } from 'lucide-react';
 import { Button } from './ui/button';
 
 const Header = ({ activeSection, onNavigate }) => {
@@ -7,9 +7,7 @@ const Header = ({ activeSection, onNavigate }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -22,104 +20,80 @@ const Header = ({ activeSection, onNavigate }) => {
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl shadow-violet-500/10 border-b border-violet-500/20'
-          : 'bg-transparent'
-      }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-18 py-4">
+
           {/* Logo */}
-          <div className="flex items-center gap-3 group cursor-pointer" onClick={() => onNavigate('home')}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-violet-400 to-indigo-400 rounded-xl blur-lg opacity-50 group-hover:opacity-75 transition-opacity" />
-              <div className="relative bg-slate-900 p-2.5 rounded-xl border border-violet-500/30">
-                <Cpu className="w-7 h-7 text-violet-400" />
-              </div>
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate('home')}>
+            <div className="bg-slate-900 p-2 rounded-lg">
+              <Cpu className="w-5 h-5 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-400 bg-clip-text text-transparent">
-                code.compyl
-              </h1>
-              <p className="text-[10px] text-slate-400 tracking-wider uppercase">by Deepak Agarwal</p>
+              <h1 className="text-lg font-bold text-slate-900">code.compyl</h1>
+              <p className="text-[10px] text-slate-400 tracking-widest uppercase">by Deepak Agarwal</p>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <button
                 key={item.id}
                 onClick={() => onNavigate(item.id)}
-                className={`relative px-5 py-2.5 text-sm font-medium rounded-lg transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
                   activeSection === item.id
-                    ? 'text-violet-400'
-                    : 'text-slate-300 hover:text-white'
+                    ? 'bg-slate-900 text-white'
+                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
                 }`}
               >
-                {activeSection === item.id && (
-                  <span className="absolute inset-0 bg-violet-500/10 rounded-lg border border-violet-500/30" />
-                )}
-                <span className="relative">{item.label}</span>
+                {item.label}
               </button>
             ))}
           </nav>
 
-          {/* CTA Button */}
+          {/* CTA */}
           <div className="hidden md:block">
             <Button
               onClick={() => onNavigate('units')}
-              className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 text-white font-semibold px-6 shadow-lg shadow-violet-500/25 hover:shadow-violet-400/40 transition-all duration-300"
+              className="bg-slate-900 hover:bg-slate-700 text-white font-medium px-5 rounded-lg transition-all duration-200"
             >
               <BookOpen className="w-4 h-4 mr-2" />
               Start Learning
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 rounded-lg bg-slate-800/50 border border-slate-700"
+            className="md:hidden p-2 rounded-lg border border-slate-200 bg-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-violet-400" />
-            ) : (
-              <Menu className="w-6 h-6 text-violet-400" />
-            )}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-slate-900" /> : <Menu className="w-5 h-5 text-slate-900" />}
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-slate-900/98 backdrop-blur-xl border-b border-violet-500/20 py-4">
-            {navItems.map((item) => (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-lg py-3">
+            {navItems.map(item => (
               <button
                 key={item.id}
-                onClick={() => {
-                  onNavigate(item.id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`block w-full text-left px-6 py-3 text-sm font-medium transition-colors ${
-                  activeSection === item.id
-                    ? 'text-violet-400 bg-violet-500/10'
-                    : 'text-slate-300 hover:text-white hover:bg-slate-800/50'
+                onClick={() => { onNavigate(item.id); setMobileMenuOpen(false); }}
+                className={`block w-full text-left px-6 py-3 text-sm font-medium ${
+                  activeSection === item.id ? 'text-slate-900 bg-slate-50' : 'text-slate-600 hover:bg-slate-50'
                 }`}
               >
                 {item.label}
               </button>
             ))}
-            <div className="px-4 pt-4">
+            <div className="px-4 pt-3 pb-1">
               <Button
-                onClick={() => {
-                  onNavigate('units');
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 text-slate-900 font-semibold"
+                onClick={() => { onNavigate('units'); setMobileMenuOpen(false); }}
+                className="w-full bg-slate-900 hover:bg-slate-700 text-white font-medium"
               >
-                <BookOpen className="w-4 h-4 mr-2" />
-                Start Learning
+                <BookOpen className="w-4 h-4 mr-2" />Start Learning
               </Button>
             </div>
           </div>

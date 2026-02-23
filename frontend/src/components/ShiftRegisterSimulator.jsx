@@ -10,7 +10,7 @@ return(
 <div key={i} className="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-lg text-xl font-bold">{bit}</div>
 ))}
 </div>
-<button onClick={()=>setReg([1,reg[0],reg[1],reg[2]])} className="bg-purple-600 text-white px-4 py-2 rounded-lg">Shift</button>
+<button onClick={()=>setReg([1,reg[0],reg[1],reg[2]])} className="bg-purple-600 text-gray-900 px-4 py-2 rounded-lg">Shift</button>
 </div>
 );
 }
