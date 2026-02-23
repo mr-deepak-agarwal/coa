@@ -74,7 +74,7 @@ function App() {
   }, [selectedUnit]);
 
   return (
-    <div className="App bg-white" style={{ fontFamily: "Outfit, sans-serif" }} min-h-screen">
+    <div className="App bg-white min-h-screen" style={{ fontFamily: "Outfit, sans-serif" }}>
       <BrowserRouter>
         <Header activeSection={activeSection} onNavigate={handleNavigate} />
         
