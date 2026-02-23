@@ -1,7 +1,12 @@
-export const courseData = {
+// ✅ This satisfies HeroSection + Footer (OLD UI)
+export const courseInfo = {
   title: "Computer Organization & Architecture",
   code: "BCA-52T-115",
+  description: "Interactive Smart Learning Platform for COA",
+};
 
+// ✅ This is used by your new syllabus + unit content
+export const courseData = {
   units: [
     {
       unit: "UNIT I",
@@ -33,7 +38,6 @@ export const courseData = {
         },
       ],
     },
-
     {
       unit: "UNIT II",
       title: "Sequential Logic",
@@ -52,7 +56,6 @@ export const courseData = {
         },
       ],
     },
-
     {
       unit: "UNIT III",
       title: "Computer Organization",
@@ -65,7 +68,6 @@ export const courseData = {
         },
       ],
     },
-
     {
       unit: "UNIT IV",
       title: "Memory Organization",
