@@ -14,7 +14,7 @@ export const units = [
     title: "Boolean Algebra & Combinational Logic",
     subtitle: "Logic Gates, Boolean Laws, Multiplexers, Decoders, Adders",
     icon: "Gate",
-    color: "from-slate-700 to-slate-900",
+    color: "from-amber-400 to-amber-600",
     topics: [
       {
         id: "1.1",
@@ -376,7 +376,7 @@ Step 2: Add: 1011 + 1101
     title: "Sequential Logic & Register Transfer",
     subtitle: "Flip-Flops, Registers, RTL, Micro-Operations",
     icon: "FlipFlop",
-    color: "from-rose-500 to-pink-600",
+    color: "from-rose-500 to-pink-500",
     topics: [
       {
         id: "2.1",
@@ -583,7 +583,7 @@ Division by 2 using ashr (signed):
     title: "Basic Computer Organization & CPU Design",
     subtitle: "Registers, Common Bus, Instruction Cycle, Addressing Modes, CPU",
     icon: "CPU",
-    color: "from-orange-500 to-amber-500",
+    color: "from-blue-500 to-blue-700",
     topics: [
       {
         id: "3.1",
@@ -940,7 +940,7 @@ Example: MAR_in = T0 (active during T0 for ALL instructions)
     title: "I/O & Memory Organization",
     subtitle: "I/O Interfaces, DMA, Interrupts, Memory Hierarchy, Cache, Virtual Memory",
     icon: "Memory",
-    color: "from-teal-500 to-cyan-600",
+    color: "from-emerald-500 to-teal-600",
     topics: [
       {
         id: "4.1",

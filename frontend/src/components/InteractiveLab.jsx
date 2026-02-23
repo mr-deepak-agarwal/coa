@@ -77,36 +77,36 @@ const InteractiveLab = () => {
   };
 
   return (
-    <section className="py-24 bg-slate-50 relative" id="interactive">
+    <section className="py-24 bg-white relative" id="interactive">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/3 left-0 w-96 h-96 bg-violet-200/40 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-indigo-200/40 rounded-full blur-3xl" />
+        <div className="absolute top-1/3 left-0 w-96 h-96 bg-amber-100/30 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/3 right-0 w-96 h-96 bg-slate-100/40 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <Badge className="mb-4 bg-emerald-100 text-emerald-700 border-emerald-200 px-4 py-1">
+          <Badge className="mb-4 bg-amber-100 text-amber-700 border-amber-200 px-4 py-1">
             Hands-on Learning
           </Badge>
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Interactive <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">Lab</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#0a0e1a] mb-4">
+            Interactive <span className="bg-gradient-to-r from-[#0a0e1a] to-[#1e293b] bg-clip-text text-transparent">Lab</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
             Experiment with logic gates, flip-flops, and number systems in real-time
           </p>
         </div>
 
         <Tabs defaultValue="gates" className="w-full">
-          <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3 bg-white border border-slate-200 shadow-sm mb-8">
-            <TabsTrigger value="gates" className="data-[state=active]:bg-slate-100 data-[state=active]:text-slate-900">
+          <TabsList className="grid w-full max-w-lg mx-auto grid-cols-3 bg-slate-50 border-2 border-slate-200 mb-8">
+            <TabsTrigger value="gates" className="data-[state=active]:bg-[#0a0e1a] data-[state=active]:text-white">
               Logic Gates
             </TabsTrigger>
-            <TabsTrigger value="flipflop" className="data-[state=active]:bg-slate-100 data-[state=active]:text-slate-900">
+            <TabsTrigger value="flipflop" className="data-[state=active]:bg-[#0a0e1a] data-[state=active]:text-white">
               Flip-Flops
             </TabsTrigger>
-            <TabsTrigger value="converter" className="data-[state=active]:bg-slate-100 data-[state=active]:text-slate-900">
+            <TabsTrigger value="converter" className="data-[state=active]:bg-[#0a0e1a] data-[state=active]:text-white">
               Number Systems
             </TabsTrigger>
           </TabsList>
@@ -114,17 +114,17 @@ const InteractiveLab = () => {
           {/* Logic Gate Simulator */}
           <TabsContent value="gates">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Card className="bg-white border-gray-200 shadow-sm">
+              <Card className="bg-white border-2 border-slate-100 shadow-sm hover:border-slate-300">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Zap className="w-5 h-5 text-slate-900" />
+                  <CardTitle className="text-[#0a0e1a] font-bold flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-amber-500" />
                     Logic Gate Simulator
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* Gate Selection */}
                   <div>
-                    <label className="text-sm text-gray-500 mb-2 block">Select Gate</label>
+                    <label className="text-sm text-slate-500 mb-2 block font-medium">Select Gate</label>
                     <div className="flex flex-wrap gap-2">
                       {['AND', 'OR', 'NOT', 'NAND', 'NOR', 'XOR', 'XNOR'].map((gate) => (
                         <Button
@@ -133,8 +133,8 @@ const InteractiveLab = () => {
                           size="sm"
                           onClick={() => setGateType(gate)}
                           className={gateType === gate 
-                            ? 'bg-slate-900 text-slate-900 hover:bg-cyan-400' 
-                            : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                            ? 'bg-[#0a0e1a] text-white hover:bg-amber-400 hover:text-[#0a0e1a]' 
+                            : 'border-2 border-slate-200 text-slate-600 hover:border-[#0a0e1a] hover:text-[#0a0e1a]'
                           }
                         >
                           {gate}
@@ -145,8 +145,8 @@ const InteractiveLab = () => {
 
                   {/* Inputs */}
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                      <span className="text-gray-700">Input A</span>
+                    <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                      <span className="text-[#0a0e1a] font-medium">Input A</span>
                       <div className="flex items-center gap-3">
                         <span className={`font-mono text-lg ${inputA ? 'text-slate-900' : 'text-gray-400'}`}>
                           {inputA ? '1' : '0'}
@@ -154,14 +154,14 @@ const InteractiveLab = () => {
                         <Switch
                           checked={inputA}
                           onCheckedChange={setInputA}
-                          className="data-[state=checked]:bg-slate-900"
+                          className="data-[state=checked]:bg-amber-400"
                         />
                       </div>
                     </div>
 
                     {gateType !== 'NOT' && (
-                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                        <span className="text-gray-700">Input B</span>
+                      <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                        <span className="text-[#0a0e1a] font-medium">Input B</span>
                         <div className="flex items-center gap-3">
                           <span className={`font-mono text-lg ${inputB ? 'text-slate-900' : 'text-gray-400'}`}>
                             {inputB ? '1' : '0'}
@@ -169,7 +169,7 @@ const InteractiveLab = () => {
                           <Switch
                             checked={inputB}
                             onCheckedChange={setInputB}
-                            className="data-[state=checked]:bg-slate-900"
+                            className="data-[state=checked]:bg-amber-400"
                           />
                         </div>
                       </div>
@@ -177,9 +177,9 @@ const InteractiveLab = () => {
                   </div>
 
                   {/* Output */}
-                  <div className="p-6 bg-gradient-to-br from-violet-50 to-indigo-50 rounded-xl border border-violet-100">
+                  <div className="p-6 bg-gradient-to-br from-slate-50 to-white rounded-xl border-2 border-slate-200">
                     <div className="text-center">
-                      <span className="text-sm text-slate-400 block mb-2">Output</span>
+                      <span className="text-xs font-bold tracking-widest uppercase text-slate-500 block mb-2">Output</span>
                       <span className={`text-6xl font-bold font-mono ${
                         calculateGateOutput() ? 'text-slate-900' : 'text-gray-300'
                       }`}>
@@ -191,56 +191,56 @@ const InteractiveLab = () => {
               </Card>
 
               {/* Truth Table */}
-              <Card className="bg-white border-gray-200 shadow-sm">
+              <Card className="bg-white border-2 border-slate-100 shadow-sm hover:border-slate-300">
                 <CardHeader>
-                  <CardTitle className="text-gray-900 flex items-center gap-2">
-                    <Info className="w-5 h-5 text-slate-700" />
+                  <CardTitle className="text-[#0a0e1a] font-bold flex items-center gap-2">
+                    <Info className="w-5 h-5 text-amber-500" />
                     {gateType} Gate Truth Table
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="bg-gray-50 rounded-lg overflow-hidden">
+                  <div className="bg-slate-50 rounded-lg overflow-hidden">
                     <table className="w-full">
                       <thead>
-                        <tr className="border-b border-slate-200">
-                          <th className="px-4 py-3 text-slate-900 font-semibold">A</th>
-                          {gateType !== 'NOT' && <th className="px-4 py-3 text-slate-900 font-semibold">B</th>}
-                          <th className="px-4 py-3 text-slate-700 font-semibold">Output</th>
+                        <tr className="border-b-2 border-slate-100">
+                          <th className="px-4 py-3 text-slate-500 text-xs font-bold uppercase tracking-wider">A</th>
+                          {gateType !== 'NOT' && <th className="px-4 py-3 text-slate-500 text-xs font-bold uppercase tracking-wider">B</th>}
+                          <th className="px-4 py-3 text-amber-500 text-xs font-bold uppercase tracking-wider">Output</th>
                         </tr>
                       </thead>
-                      <tbody className="text-gray-700">
+                      <tbody className="text-[#0a0e1a]">
                         {gateType === 'NOT' ? (
                           <>
-                            <tr className="border-b border-slate-200/50"><td className="px-4 py-2 text-center">0</td><td className="px-4 py-2 text-center font-semibold text-slate-700">1</td></tr>
-                            <tr><td className="px-4 py-2 text-center">1</td><td className="px-4 py-2 text-center font-semibold text-slate-700">0</td></tr>
+                            <tr className="border-b border-slate-200/50"><td className="px-4 py-2 text-center">0</td><td className="px-4 py-2 text-center font-bold text-amber-500">1</td></tr>
+                            <tr><td className="px-4 py-2 text-center">1</td><td className="px-4 py-2 text-center font-bold text-amber-500">0</td></tr>
                           </>
                         ) : (
                           <>
                             <tr className="border-b border-slate-200/50">
                               <td className="px-4 py-2 text-center">0</td>
                               <td className="px-4 py-2 text-center">0</td>
-                              <td className="px-4 py-2 text-center font-semibold text-slate-700">
+                              <td className="px-4 py-2 text-center font-bold text-amber-500">
                                 {gateType === 'AND' ? 0 : gateType === 'OR' ? 0 : gateType === 'NAND' ? 1 : gateType === 'NOR' ? 1 : gateType === 'XOR' ? 0 : 1}
                               </td>
                             </tr>
                             <tr className="border-b border-slate-200/50">
                               <td className="px-4 py-2 text-center">0</td>
                               <td className="px-4 py-2 text-center">1</td>
-                              <td className="px-4 py-2 text-center font-semibold text-slate-700">
+                              <td className="px-4 py-2 text-center font-bold text-amber-500">
                                 {gateType === 'AND' ? 0 : gateType === 'OR' ? 1 : gateType === 'NAND' ? 1 : gateType === 'NOR' ? 0 : gateType === 'XOR' ? 1 : 0}
                               </td>
                             </tr>
                             <tr className="border-b border-slate-200/50">
                               <td className="px-4 py-2 text-center">1</td>
                               <td className="px-4 py-2 text-center">0</td>
-                              <td className="px-4 py-2 text-center font-semibold text-slate-700">
+                              <td className="px-4 py-2 text-center font-bold text-amber-500">
                                 {gateType === 'AND' ? 0 : gateType === 'OR' ? 1 : gateType === 'NAND' ? 1 : gateType === 'NOR' ? 0 : gateType === 'XOR' ? 1 : 0}
                               </td>
                             </tr>
                             <tr>
                               <td className="px-4 py-2 text-center">1</td>
                               <td className="px-4 py-2 text-center">1</td>
-                              <td className="px-4 py-2 text-center font-semibold text-slate-700">
+                              <td className="px-4 py-2 text-center font-bold text-amber-500">
                                 {gateType === 'AND' ? 1 : gateType === 'OR' ? 1 : gateType === 'NAND' ? 0 : gateType === 'NOR' ? 0 : gateType === 'XOR' ? 0 : 1}
                               </td>
                             </tr>
@@ -252,7 +252,7 @@ const InteractiveLab = () => {
                   
                   <div className="mt-4 p-4 bg-slate-50 rounded-lg">
                     <h4 className="text-slate-900 font-semibold mb-2">Gate Expression</h4>
-                    <code className="text-gray-700">
+                    <code className="text-[#0a0e1a]">
                       {gateType === 'AND' && 'Y = A · B'}
                       {gateType === 'OR' && 'Y = A + B'}
                       {gateType === 'NOT' && "Y = A'"}
@@ -270,14 +270,14 @@ const InteractiveLab = () => {
           {/* Flip-Flop Simulator */}
           <TabsContent value="flipflop">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <Card className="bg-white border-gray-200 shadow-sm">
+              <Card className="bg-white border-2 border-slate-100 shadow-sm hover:border-slate-300">
                 <CardHeader>
                   <CardTitle className="text-gray-900">Flip-Flop Simulator</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* FF Type Selection */}
                   <div>
-                    <label className="text-sm text-gray-500 mb-2 block">Select Flip-Flop Type</label>
+                    <label className="text-sm text-slate-500 mb-2 block font-medium">Select Flip-Flop Type</label>
                     <div className="flex flex-wrap gap-2">
                       {['SR', 'D', 'JK', 'T'].map((ff) => (
                         <Button
@@ -286,7 +286,7 @@ const InteractiveLab = () => {
                           onClick={() => setFlipFlopType(ff)}
                           className={flipFlopType === ff 
                             ? 'bg-emerald-500 text-slate-900 hover:bg-emerald-400' 
-                            : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                            : 'border-2 border-slate-200 text-slate-600 hover:border-[#0a0e1a] hover:text-[#0a0e1a]'
                           }
                         >
                           {ff} Flip-Flop
@@ -297,8 +297,8 @@ const InteractiveLab = () => {
 
                   {/* Inputs */}
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                      <span className="text-gray-700">
+                    <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                      <span className="text-[#0a0e1a]">
                         {flipFlopType === 'SR' ? 'S (Set)' : flipFlopType === 'D' ? 'D (Data)' : flipFlopType === 'JK' ? 'J' : 'T (Toggle)'}
                       </span>
                       <div className="flex items-center gap-3">
@@ -308,14 +308,14 @@ const InteractiveLab = () => {
                         <Switch
                           checked={ffInputS}
                           onCheckedChange={setFfInputS}
-                          className="data-[state=checked]:bg-slate-900"
+                          className="data-[state=checked]:bg-amber-400"
                         />
                       </div>
                     </div>
 
                     {(flipFlopType === 'SR' || flipFlopType === 'JK') && (
-                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                        <span className="text-gray-700">
+                      <div className="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                        <span className="text-[#0a0e1a]">
                           {flipFlopType === 'SR' ? 'R (Reset)' : 'K'}
                         </span>
                         <div className="flex items-center gap-3">
@@ -325,7 +325,7 @@ const InteractiveLab = () => {
                           <Switch
                             checked={ffInputR}
                             onCheckedChange={setFfInputR}
-                            className="data-[state=checked]:bg-slate-900"
+                            className="data-[state=checked]:bg-amber-400"
                           />
                         </div>
                       </div>
@@ -338,7 +338,7 @@ const InteractiveLab = () => {
                     className={`w-full py-6 text-lg font-semibold transition-all duration-300 ${
                       ffClock 
                         ? 'bg-amber-500 text-white' 
-                        : 'bg-gradient-to-r from-emerald-500 to-teal-500 text-slate-900 hover:from-emerald-400 hover:to-teal-400'
+                        : 'bg-gradient-to-r from-[#0a0e1a] to-[#1e293b] text-slate-900 hover:from-emerald-400 hover:to-teal-400'
                     }`}
                   >
                     <Play className="w-5 h-5 mr-2" />
@@ -347,7 +347,7 @@ const InteractiveLab = () => {
 
                   {/* Output */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="p-6 bg-gradient-to-br from-violet-50 to-indigo-50 rounded-xl border border-violet-100 text-center">
+                    <div className="p-6 bg-gradient-to-br from-slate-50 to-white rounded-xl border-2 border-slate-200 text-center">
                       <span className="text-sm text-slate-400 block mb-2">Q (Output)</span>
                       <span className={`text-5xl font-bold font-mono ${
                         ffOutput ? 'text-slate-700' : 'text-gray-300'
@@ -355,7 +355,7 @@ const InteractiveLab = () => {
                         {ffOutput ? '1' : '0'}
                       </span>
                     </div>
-                    <div className="p-6 bg-gradient-to-br from-violet-50 to-indigo-50 rounded-xl border border-violet-100 text-center">
+                    <div className="p-6 bg-gradient-to-br from-slate-50 to-white rounded-xl border-2 border-slate-200 text-center">
                       <span className="text-sm text-slate-400 block mb-2">Q' (Complement)</span>
                       <span className={`text-5xl font-bold font-mono ${
                         !ffOutput ? 'text-slate-900' : 'text-gray-300'
@@ -372,7 +372,7 @@ const InteractiveLab = () => {
                       setFfInputS(false);
                       setFfInputR(false);
                     }}
-                    className="w-full border-gray-300 text-gray-700 hover:bg-gray-50"
+                    className="w-full border-2 border-slate-200 text-slate-600 hover:border-[#0a0e1a] hover:text-[#0a0e1a]"
                   >
                     <RotateCcw className="w-4 h-4 mr-2" />
                     Reset
@@ -381,14 +381,14 @@ const InteractiveLab = () => {
               </Card>
 
               {/* FF Info */}
-              <Card className="bg-white border-gray-200 shadow-sm">
+              <Card className="bg-white border-2 border-slate-100 shadow-sm hover:border-slate-300">
                 <CardHeader>
                   <CardTitle className="text-gray-900">{flipFlopType} Flip-Flop Details</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-slate-50 rounded-lg p-4">
                     <h4 className="text-slate-700 font-semibold mb-2">Characteristic Equation</h4>
-                    <code className="text-xl text-gray-700">
+                    <code className="text-xl text-[#0a0e1a]">
                       {flipFlopType === 'SR' && "Q(n+1) = S + R'Q(n)"}
                       {flipFlopType === 'D' && 'Q(n+1) = D'}
                       {flipFlopType === 'JK' && "Q(n+1) = JQ'(n) + K'Q(n)"}
@@ -396,7 +396,7 @@ const InteractiveLab = () => {
                     </code>
                   </div>
                   
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-slate-50 rounded-lg p-4">
                     <h4 className="text-slate-700 font-semibold mb-2">Description</h4>
                     <p className="text-slate-400">
                       {flipFlopType === 'SR' && 'Set-Reset flip-flop. S=1 sets output to 1, R=1 resets to 0. S=R=1 is an invalid/forbidden state.'}
@@ -406,7 +406,7 @@ const InteractiveLab = () => {
                     </p>
                   </div>
 
-                  <div className="bg-gray-50 rounded-lg p-4">
+                  <div className="bg-slate-50 rounded-lg p-4">
                     <h4 className="text-slate-700 font-semibold mb-2">Applications</h4>
                     <ul className="text-gray-500 space-y-1">
                       {flipFlopType === 'SR' && <><li>• Basic memory cell</li><li>• Switch debouncing</li><li>• Control circuits</li></>}
@@ -423,19 +423,19 @@ const InteractiveLab = () => {
           {/* Number System Converter */}
           <TabsContent value="converter">
             <div className="max-w-2xl mx-auto">
-              <Card className="bg-white border-gray-200 shadow-sm">
+              <Card className="bg-white border-2 border-slate-100 shadow-sm hover:border-slate-300">
                 <CardHeader>
                   <CardTitle className="text-slate-900 text-center">Number System Converter</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* Decimal Input */}
                   <div>
-                    <label className="text-sm text-gray-500 mb-2 block">Enter Decimal Number</label>
+                    <label className="text-sm text-slate-500 mb-2 block font-medium">Enter Decimal Number</label>
                     <input
                       type="number"
                       value={decimalInput}
                       onChange={(e) => setDecimalInput(e.target.value)}
-                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-2xl font-mono text-slate-900 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-colors"
+                      className="w-full bg-white border border-gray-300 rounded-lg px-4 py-3 text-2xl font-mono text-slate-900 focus:outline-none focus:border-[#0a0e1a] focus:ring-2 focus:ring-amber-100 transition-colors"
                       min="0"
                     />
                   </div>
@@ -456,7 +456,7 @@ const InteractiveLab = () => {
                     </div>
                     <div className="bg-gray-50 rounded-xl p-6 text-center border border-gray-200">
                       <span className="text-sm text-slate-400 block mb-2">Hexadecimal (Base 16)</span>
-                      <span className="text-xl font-mono text-amber-400">
+                      <span className="text-xl font-mono text-amber-500">
                         0x{decToHex(decimalInput)}
                       </span>
                     </div>
@@ -469,7 +469,7 @@ const InteractiveLab = () => {
                       {decToBinary(decimalInput).split('').map((bit, idx) => (
                         <div key={idx} className="flex flex-col items-center">
                           <span className={`w-10 h-10 flex items-center justify-center rounded-lg font-mono text-xl font-bold ${
-                            bit === '1' ? 'bg-slate-900/10 text-slate-900 border border-violet-500/50' : 'bg-slate-100 text-gray-300 border border-slate-200'
+                            bit === '1' ? 'bg-slate-100 text-slate-900 border border-violet-500/50' : 'bg-slate-100 text-gray-300 border border-slate-200'
                           }`}>
                             {bit}
                           </span>

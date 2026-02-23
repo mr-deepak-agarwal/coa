@@ -74,7 +74,7 @@ function App() {
   }, [selectedUnit]);
 
   return (
-    <div className="App bg-white min-h-screen">
+    <div className="App bg-white" style={{ fontFamily: "Outfit, sans-serif" }} min-h-screen">
       <BrowserRouter>
         <Header activeSection={activeSection} onNavigate={handleNavigate} />
         
@@ -91,7 +91,7 @@ function App() {
             {selectedUnit ? (
               <UnitContent selectedUnit={selectedUnit} onBack={handleBackFromUnit} />
             ) : (
-              <section className="py-24 bg-gray-50" id="units">
+              <section className="py-24 bg-[#f8fafc]" id="units">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                   <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-12">
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">Select a Unit to Begin</h3>

@@ -17,12 +17,12 @@ const DiagramCard = ({ diagram }) => {
   return (
     <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
       <div className="flex items-center gap-2 px-4 py-2 border-b border-gray-100 bg-gray-50">
-        <ImageIcon className="w-4 h-4 text-slate-900" />
-        <span className="text-xs font-medium text-slate-900 uppercase tracking-wider">{diagram.caption}</span>
+        <ImageIcon className="w-4 h-4 text-[#0a0e1a]" />
+        <span className="text-xs font-medium text-[#0a0e1a] uppercase tracking-wider">{diagram.caption}</span>
       </div>
       <div className="p-4 flex justify-center bg-gray-50 min-h-[180px] items-center">
         {error ? (
-          <div className="flex flex-col items-center gap-2 text-gray-400">
+          <div className="flex flex-col items-center gap-2 text-slate-400">
             <AlertCircle className="w-8 h-8" />
             <span className="text-xs">{diagram.caption}</span>
           </div>
@@ -47,27 +47,27 @@ const TheoryBlock = ({ topic }) => (
     {/* Main theory paragraphs */}
     {topic.theoryParagraphs
       ? topic.theoryParagraphs.map((para, i) => (
-          <div key={i} className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-5 border border-gray-200">
-            <p className="text-gray-700 leading-relaxed">{para}</p>
+          <div key={i} className="bg-white rounded-xl p-5 border-2 border-slate-100">
+            <p className="text-[#0a0e1a] leading-relaxed text-sm">{para}</p>
           </div>
         ))
       : (
-        <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-5 border border-gray-200">
-          <p className="text-gray-700 leading-relaxed text-base">{topic.theory}</p>
+        <div className="bg-white rounded-xl p-5 border-2 border-slate-100">
+          <p className="text-[#0a0e1a] leading-relaxed text-sm text-base">{topic.theory}</p>
         </div>
       )
     }
 
     {/* Key Points box */}
     {topic.keyPoints && (
-      <div className="bg-violet-50 border border-slate-200 rounded-xl p-5">
-        <h4 className="text-sm font-semibold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+      <div className="bg-violet-50 border border-slate-100 rounded-xl p-5">
+        <h4 className="text-sm font-semibold text-[#0a0e1a] uppercase tracking-wider mb-3 flex items-center gap-2">
           <Zap className="w-4 h-4" /> Key Points (University of Rajasthan)
         </h4>
         <ul className="space-y-2">
           {topic.keyPoints.map((pt, i) => (
             <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-              <span className="mt-1 w-4 h-4 rounded-full bg-slate-100 text-slate-900 text-xs flex items-center justify-center flex-shrink-0 font-bold">{i + 1}</span>
+              <span className="mt-1 w-4 h-4 rounded-full bg-slate-50 text-[#0a0e1a] text-xs flex items-center justify-center flex-shrink-0 font-bold">{i + 1}</span>
               {pt}
             </li>
           ))}
@@ -101,7 +101,7 @@ const renderContent = (content) => {
               {item.items.map((gate, idx) => (
                 <Card key={idx} className="bg-gray-50 border-gray-200 hover:border-violet-300 transition-colors">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-base text-slate-900">{gate.name}</CardTitle>
+                    <CardTitle className="text-base text-[#0a0e1a]">{gate.name}</CardTitle>
                     <code className="text-xs bg-white px-2 py-0.5 rounded text-slate-700 w-fit">{gate.symbol}</code>
                   </CardHeader>
                   <CardContent>
@@ -110,7 +110,7 @@ const renderContent = (content) => {
                       <div className="bg-white rounded-lg p-2">
                         <table className="w-full text-xs">
                           <thead>
-                            <tr className="text-slate-900">
+                            <tr className="text-[#0a0e1a]">
                               {gate.truthTable[0].length === 3
                                 ? <><th className="p-1">A</th><th className="p-1">B</th><th className="p-1">Out</th></>
                                 : <><th className="p-1">In</th><th className="p-1">Out</th></>}
@@ -139,13 +139,13 @@ const renderContent = (content) => {
         return (
           <div key={index} className="space-y-2">
             {item.items.map((law, idx) => (
-              <div key={idx} className="bg-gray-50 rounded-xl p-4 border border-gray-200 hover:border-slate-200 transition-colors">
+              <div key={idx} className="bg-gray-50 rounded-xl p-4 border border-gray-200 hover:border-slate-100 transition-colors">
                 <div className="flex items-start justify-between gap-4 flex-wrap">
                   <div>
                     <h5 className="font-semibold text-gray-900 text-sm mb-0.5">{law.name}</h5>
                     <p className="text-xs text-gray-500">{law.explanation}</p>
                   </div>
-                  <code className="bg-white px-3 py-1 rounded text-slate-900 text-sm whitespace-nowrap font-mono">{law.formula}</code>
+                  <code className="bg-white px-3 py-1 rounded text-[#0a0e1a] text-sm whitespace-nowrap font-mono">{law.formula}</code>
                 </div>
               </div>
             ))}
@@ -161,7 +161,7 @@ const renderContent = (content) => {
           <div key={index} className="space-y-3">
             {item.items && item.items.map((entry, idx) => (
               <div key={idx} className="bg-gray-50 rounded-xl p-4 border border-gray-200">
-                <h5 className="font-semibold text-slate-900 mb-1">{entry.name}</h5>
+                <h5 className="font-semibold text-[#0a0e1a] mb-1">{entry.name}</h5>
                 {entry.formula && <code className="block bg-white px-3 py-2 rounded text-slate-700 text-sm mb-2 font-mono">{entry.formula}</code>}
                 {entry.characteristic && <code className="block bg-white px-3 py-2 rounded text-slate-700 text-sm mb-2 font-mono">{entry.characteristic}</code>}
                 <p className="text-sm text-gray-500">{entry.description || entry.desc}</p>
@@ -176,7 +176,7 @@ const renderContent = (content) => {
             {item.items.map((reg, idx) => (
               <div key={idx} className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-2">
-                  <span className="font-mono text-slate-900 font-bold text-base">{reg.name}</span>
+                  <span className="font-mono text-[#0a0e1a] font-bold text-base">{reg.name}</span>
                   <Badge className="bg-slate-700 text-gray-700 text-xs">{reg.bits}-bit</Badge>
                 </div>
                 <p className="text-sm text-gray-500">{reg.purpose}</p>
@@ -195,7 +195,7 @@ const renderContent = (content) => {
             {item.items && item.items.map((entry, idx) => (
               <div key={idx} className="bg-gray-50 rounded-xl p-4 border border-gray-200">
                 <div className="flex items-center gap-2 mb-1 flex-wrap">
-                  <span className="font-semibold text-slate-900">{entry.name || entry.type}</span>
+                  <span className="font-semibold text-[#0a0e1a]">{entry.name || entry.type}</span>
                   {entry.opcode && <Badge className="bg-slate-700 text-xs">{entry.opcode}</Badge>}
                 </div>
                 <p className="text-sm text-gray-500">{entry.desc || entry.description || entry.example}</p>
@@ -216,7 +216,7 @@ const renderContent = (content) => {
                     <div className="flex flex-wrap items-center gap-3">
                       <span className="font-semibold text-gray-900">{level.level}</span>
                       <Badge className="bg-slate-900/10 text-slate-700 border-teal-500/30 text-xs">{level.speed}</Badge>
-                      <span className="text-sm text-gray-400">{level.size}</span>
+                      <span className="text-sm text-slate-400">{level.size}</span>
                     </div>
                   </div>
                 </div>
@@ -266,7 +266,7 @@ const UnitContent = ({ selectedUnit, onBack }) => {
               {getIcon(unit.icon)}
             </div>
             <div>
-              <Badge className="bg-slate-100 text-slate-900 border-slate-200 mb-1">Unit {unit.id}</Badge>
+              <Badge className="bg-slate-50 text-[#0a0e1a] border-slate-100 mb-1">Unit {unit.id}</Badge>
               <h2 className="text-3xl font-bold text-gray-900">{unit.title}</h2>
               <p className="text-gray-500 text-sm mt-0.5">{unit.subtitle}</p>
             </div>
@@ -287,7 +287,7 @@ const UnitContent = ({ selectedUnit, onBack }) => {
                       onClick={() => setCurrentTopicIndex(index)}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
                         currentTopicIndex === index
-                          ? 'bg-slate-100 text-slate-900 font-medium'
+                          ? 'bg-slate-50 text-[#0a0e1a] font-medium'
                           : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'
                       }`}
                     >
@@ -315,7 +315,7 @@ const UnitContent = ({ selectedUnit, onBack }) => {
                       className="border-gray-200 text-gray-500 hover:text-gray-900 disabled:opacity-30">
                       <ChevronLeft className="w-4 h-4" />
                     </Button>
-                    <span className="text-xs text-gray-400">{currentTopicIndex + 1}/{unit.topics.length}</span>
+                    <span className="text-xs text-slate-400">{currentTopicIndex + 1}/{unit.topics.length}</span>
                     <Button variant="outline" size="icon" disabled={currentTopicIndex === unit.topics.length - 1}
                       onClick={() => setCurrentTopicIndex(p => p + 1)}
                       className="border-gray-200 text-gray-500 hover:text-gray-900 disabled:opacity-30">
@@ -328,13 +328,13 @@ const UnitContent = ({ selectedUnit, onBack }) => {
               <CardContent className="pt-6">
                 <Tabs defaultValue="theory" className="w-full">
                   <TabsList className="bg-gray-100 border border-gray-200 mb-6 flex-wrap h-auto gap-1">
-                    <TabsTrigger value="theory" className="data-[state=active]:bg-slate-900/10 data-[state=active]:text-slate-900">
+                    <TabsTrigger value="theory" className="data-[state=active]:bg-slate-900/10 data-[state=active]:text-[#0a0e1a]">
                       <BookOpen className="w-4 h-4 mr-1" /> Theory
                     </TabsTrigger>
-                    <TabsTrigger value="content" className="data-[state=active]:bg-slate-900/10 data-[state=active]:text-slate-900">
+                    <TabsTrigger value="content" className="data-[state=active]:bg-slate-900/10 data-[state=active]:text-[#0a0e1a]">
                       <Code className="w-4 h-4 mr-1" /> Detailed Content
                     </TabsTrigger>
-                    <TabsTrigger value="example" className="data-[state=active]:bg-slate-900/10 data-[state=active]:text-slate-900">
+                    <TabsTrigger value="example" className="data-[state=active]:bg-slate-900/10 data-[state=active]:text-[#0a0e1a]">
                       <Lightbulb className="w-4 h-4 mr-1" /> Example
                     </TabsTrigger>
                   </TabsList>
