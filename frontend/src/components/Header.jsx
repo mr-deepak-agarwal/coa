@@ -21,8 +21,8 @@ const Header = ({ activeSection, onNavigate }) => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled
-        ? 'bg-white/96 backdrop-blur-sm border-b-2 border-[#0a0e1a] shadow-sm'
-        : 'bg-transparent border-b border-transparent'
+        ? 'bg-white border-b-2 border-[#0a0e1a]'
+        : 'bg-white border-b border-slate-100'
     }`} style={{ fontFamily: 'Outfit, sans-serif' }}>
 
       {/* Top amber line — always visible */}
